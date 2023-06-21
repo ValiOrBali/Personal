@@ -10,24 +10,33 @@ def process_json_data(file_path):
     json_data = read_json_file(file_path)
     
     # Initialize dictionaries
-    dictionaries = [{}, {}, {}]
+    hdfsdf = {}
+    asdas = {}
+    asdad = {}
     
     # Iterate over JSON data and store key-value pairs in respective dictionaries
     for index, item in enumerate(json_data):
-        if index < len(dictionaries):
-            target_dict = dictionaries[index]
-            for key, value in item.items():
-                target_dict[key] = value
+        if index == 0:
+            target_dict = hdfsdf
+        elif index == 1:
+            target_dict = asdas
+        elif index == 2:
+            target_dict = asdad
+        else:
+            break
+            
+        for key, value in item.items():
+            target_dict[key] = value
     
     # Return the dictionaries
-    return dictionaries
+    return hdfsdf, asdas, asdad
 
 # Example usage
 file_path = "data.json"
-result = process_json_data(file_path)
+hdfsdf, asdas, asdad = process_json_data(file_path)
 
 # Print the dictionaries
-print("hdfsdf:", result[0])
-print("asdas:", result[1])
-print("asdad:", result[2])
+print("hdfsdf:", hdfsdf)
+print("asdas:", asdas)
+print("asdad:", asdad)
 
