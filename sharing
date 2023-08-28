@@ -1,0 +1,53 @@
+---
+
+- name: Example Playbook
+
+hosts: localhost
+
+vars:
+
+a:
+
+- b:
+
+- x
+
+c:
+
+- y
+
+- p
+
+tasks:
+
+- name: Display Nested Variables
+
+debug:
+
+msg: |
+
+{% for item in a %}
+
+{% if 'b' in item %}
+
+Values of b:
+
+{% for b_item in item.b %}
+
+- {{ b_item }}
+
+{% endfor %}
+
+{% endif %}
+
+Values of c:
+
+{% for c_item in item.c %}
+
+- {{ c_item }}
+
+{% endfor %}
+
+{% endfor %}
+
+ 
